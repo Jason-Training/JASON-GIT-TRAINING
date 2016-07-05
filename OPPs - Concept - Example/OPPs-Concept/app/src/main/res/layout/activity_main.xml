@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".View.MainActivity">
+    <LinearLayout
+        android:paddingLeft="50dp"
+        android:paddingRight="50dp"
+        android:layout_centerVertical="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <Button
+            android:layout_marginBottom="5dp"
+            android:background="@drawable/button_click"
+            android:textColor="#FFF"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="OOPs Concept"
+            android:onClick="onclickStartOOP"
+            android:layout_gravity="center_horizontal" />
+        <Button
+            android:textColor="#FFF"
+            android:layout_width="match_parent"
+            android:background="@drawable/button_click"
+            android:layout_height="wrap_content"
+            android:onClick="onclickStartMultiThread"
+            android:text="Multi Thread"
+            android:layout_gravity="center_horizontal" />
+    </LinearLayout>
+
+</RelativeLayout>
