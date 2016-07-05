@@ -25,6 +25,7 @@ public class RunnableInterface extends AppCompatActivity {
         progressBar_2 = (ProgressBar) findViewById(R.id.progressBar_thread_2);
         progressBar_3 = (ProgressBar) findViewById(R.id.progressBar_thread_3);
 
+        
         customizeRunable_1 = new CustomizeRunable(progressBar_1, random.nextInt(5));
         customizeRunable_2 = new CustomizeRunable(progressBar_2, random.nextInt(5));
         customizeRunable_3 = new CustomizeRunable(progressBar_3, random.nextInt(5));
