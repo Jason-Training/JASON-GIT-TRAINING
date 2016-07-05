@@ -5,4 +5,5 @@
     <color name="colorAccent">#2f8473</color>
     <color name="mainColor">#2f8473</color>
     <color name="mainColorBlend">#552f8473</color>
+    <color name="clickTrue">#55b5f7ea</color>
 </resources>

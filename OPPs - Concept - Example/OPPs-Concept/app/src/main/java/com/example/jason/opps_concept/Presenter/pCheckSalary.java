@@ -15,12 +15,12 @@ import junit.framework.TestCase;
 /**
  * Created by jason on 04/07/2016.
  */
-public class pAddStaff {
+public class pCheckSalary {
 
     private InValidAge mInValidAge;
     private CheckSalaryActivity mView;
 
-    public pAddStaff(CheckSalaryActivity mView) {
+    public pCheckSalary(CheckSalaryActivity mView) {
         this.mView = mView;
     }
 
@@ -46,7 +46,6 @@ public class pAddStaff {
     }
 
     public void saveStaff(Staff staff){
-            Toast.makeText(mView, "You'll be become a new member of my company.\n" +
-                    "Your salary = " + staff.getPayroll(), Toast.LENGTH_LONG).show();
+            Toast.makeText(mView, "Your salary: " + staff.getPayroll(), Toast.LENGTH_LONG).show();
     }
 }

@@ -16,6 +16,7 @@ public class RunnableInterface extends AppCompatActivity {
     private ProgressBar progressBar_1, progressBar_2, progressBar_3;
     private CustomizeRunable customizeRunable_1, customizeRunable_2, customizeRunable_3;
     private Random random = new Random();
+    private boolean start = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,16 +26,24 @@ public class RunnableInterface extends AppCompatActivity {
         progressBar_2 = (ProgressBar) findViewById(R.id.progressBar_thread_2);
         progressBar_3 = (ProgressBar) findViewById(R.id.progressBar_thread_3);
 
-        
+
         customizeRunable_1 = new CustomizeRunable(progressBar_1, random.nextInt(5));
         customizeRunable_2 = new CustomizeRunable(progressBar_2, random.nextInt(5));
         customizeRunable_3 = new CustomizeRunable(progressBar_3, random.nextInt(5));
     }
 
     public void onclickStart(View view){
+        if (!start) {
             customizeRunable_1.start();
             customizeRunable_2.start();
             customizeRunable_3.start();
+            start = true;
+        } else {
+            customizeRunable_1 = new CustomizeRunable(progressBar_1, random.nextInt(5));
+            customizeRunable_2 = new CustomizeRunable(progressBar_2, random.nextInt(5));
+            customizeRunable_3 = new CustomizeRunable(progressBar_3, random.nextInt(5));
+            start = false;
+        }
     }
 
     public class CustomizeRunable implements Runnable{

@@ -6,14 +6,12 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
-import android.widget.ProgressBar;
 import android.widget.Spinner;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.jason.opps_concept.CustomizeExceptionHandling.NullValue;
 import com.example.jason.opps_concept.CustomizeExceptionHandling.NullValueException;
-import com.example.jason.opps_concept.Presenter.pAddStaff;
+import com.example.jason.opps_concept.Presenter.pCheckSalary;
 import com.example.jason.opps_concept.R;
 
 import java.util.ArrayList;
@@ -24,7 +22,7 @@ public class CheckSalaryActivity extends AppCompatActivity implements iCheckSala
     private EditText edtName, edtAge;
     private Spinner spnSex, spnPosition;
     private String Name = null, Sex = null, Position = null, Age = null;
-    private pAddStaff mPAddStaff;
+    private pCheckSalary mCheckSalary;
     private NullValue mNullValueName;
     private NullValue mNullValueAge;
 
@@ -33,7 +31,7 @@ public class CheckSalaryActivity extends AppCompatActivity implements iCheckSala
         super.onCreate(savedInstanceState);
         setContentView(R.layout.check_salary);
 
-        mPAddStaff = new pAddStaff(this);
+        mCheckSalary = new pCheckSalary(this);
 
         //EditText call view item
         edtName = (EditText) findViewById(R.id.editText_staff_name);
@@ -83,7 +81,7 @@ public class CheckSalaryActivity extends AppCompatActivity implements iCheckSala
         try {
             mNullValueName.checkValue();
             mNullValueAge.checkValue();
-            mPAddStaff.setStaffInformation(Name, Sex, Age, Position);
+            mCheckSalary.setStaffInformation(Name, Sex, Age, Position);
         } catch (NullValueException e) {
             e.printStackTrace();
             Toast.makeText(CheckSalaryActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
