@@ -7,6 +7,7 @@ import android.view.View;
  */
 public interface iLoginView {
     void startActivities(Class mClass, String intent, String intentContent);
+    void startMainActivity();
     String getUsername();
     String getPassword();
     boolean getRemember();

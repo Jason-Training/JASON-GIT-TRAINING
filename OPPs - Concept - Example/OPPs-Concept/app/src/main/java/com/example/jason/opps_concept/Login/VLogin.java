@@ -39,7 +39,7 @@ public class VLogin extends AppCompatActivity implements iLoginView{
         edtPassword = (EditText) findViewById(R.id.editText_password);
         cbRemember = (CheckBox) findViewById(R.id.checkbox_remember);
 
-        mPLogin = new PLogin(this);
+        mPLogin = new PLogin(this, new LoginService());
 
         Init();
     }
@@ -53,9 +53,13 @@ public class VLogin extends AppCompatActivity implements iLoginView{
 
     @Override
     public void onClickLogin(View view){
-        mPLogin.checkLogin();
+        editSharePreference();
     }
 
+    @Override
+    public void startMainActivity(){
+        startActivities(MainActivity.class, "Email", getUsername());
+    }
 
     @Override
     public void startActivities(Class mClass, String intent_name,  String intent_content){
@@ -122,7 +126,7 @@ public class VLogin extends AppCompatActivity implements iLoginView{
         e.putBoolean(REMEMBER, getRemember());
         e.putBoolean(LOGIN, getLoginStatus());
         e.commit();
-        mPLogin.checkLogin();
+        mPLogin.loginClick();
     }
 
     @Override
