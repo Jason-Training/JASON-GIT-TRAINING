@@ -1,4 +1,4 @@
-package com.example.jason.opps_concept.View;
+package com.example.jason.opps_concept.OPPsConcept.View;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -11,7 +11,7 @@ import android.widget.Toast;
 
 import com.example.jason.opps_concept.CustomizeExceptionHandling.NullValue;
 import com.example.jason.opps_concept.CustomizeExceptionHandling.NullValueException;
-import com.example.jason.opps_concept.Presenter.pCheckSalary;
+import com.example.jason.opps_concept.OPPsConcept.Presenter.pCheckSalary;
 import com.example.jason.opps_concept.R;
 
 import java.util.ArrayList;

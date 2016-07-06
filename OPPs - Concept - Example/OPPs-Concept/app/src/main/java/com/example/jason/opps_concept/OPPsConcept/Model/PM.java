@@ -1,4 +1,4 @@
-package com.example.jason.opps_concept.Model;
+package com.example.jason.opps_concept.OPPsConcept.Model;
 
 /**
  * Created by jason on 05/07/2016.

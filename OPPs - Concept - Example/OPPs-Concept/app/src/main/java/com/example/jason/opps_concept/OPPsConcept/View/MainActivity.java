@@ -1,4 +1,4 @@
-package com.example.jason.opps_concept.View;
+package com.example.jason.opps_concept.OPPsConcept.View;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;

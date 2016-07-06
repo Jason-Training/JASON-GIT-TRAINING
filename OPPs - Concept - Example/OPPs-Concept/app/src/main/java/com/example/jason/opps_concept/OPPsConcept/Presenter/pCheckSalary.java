@@ -1,16 +1,13 @@
-package com.example.jason.opps_concept.Presenter;
+package com.example.jason.opps_concept.OPPsConcept.Presenter;
 
 import android.widget.Toast;
 
 import com.example.jason.opps_concept.CustomizeExceptionHandling.InValidAge;
 import com.example.jason.opps_concept.CustomizeExceptionHandling.InvalidAgeException;
-import com.example.jason.opps_concept.Model.Def;
-import com.example.jason.opps_concept.Model.PM;
-import com.example.jason.opps_concept.Model.Staff;
-import com.example.jason.opps_concept.View.CheckSalaryActivity;
-
-import junit.framework.Assert;
-import junit.framework.TestCase;
+import com.example.jason.opps_concept.OPPsConcept.Model.Def;
+import com.example.jason.opps_concept.OPPsConcept.Model.PM;
+import com.example.jason.opps_concept.OPPsConcept.Model.Staff;
+import com.example.jason.opps_concept.OPPsConcept.View.CheckSalaryActivity;
 
 /**
  * Created by jason on 04/07/2016.

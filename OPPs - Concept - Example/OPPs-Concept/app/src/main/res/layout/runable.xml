@@ -4,7 +4,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.jason.opps_concept.View.RunnableInterface">
+    tools:context=".OPPsConcept.View.RunnableInterface">
     <RelativeLayout
         android:background="@color/mainColor"
         android:layout_width="match_parent"
