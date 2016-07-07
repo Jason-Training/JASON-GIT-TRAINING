@@ -8,7 +8,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.jason.opps_concept.OPPsConcept.View.MainActivity;
@@ -20,7 +19,6 @@ import com.example.jason.opps_concept.R;
 public class VLogin extends AppCompatActivity implements iLoginView{
 
     private EditText edtEmail = null, edtPassword = null;
-//    private TextView tvSignup = null;
     private CheckBox cbRemember = null;
     private PLogin mPLogin = null;
     private static final String PRE_NAME = "LOGIN";
@@ -58,14 +56,43 @@ public class VLogin extends AppCompatActivity implements iLoginView{
 
     @Override
     public void startMainActivity(){
-        startActivities(MainActivity.class, "Email", getUsername());
+        customStartActivity(MainActivity.class);
     }
 
     @Override
-    public void startActivities(Class mClass, String intent_name,  String intent_content){
+    public void customStartActivity(Class mClass){
         Intent mIntent = new Intent(this, mClass);
-        mIntent.putExtra(intent_name, intent_content);
         startActivity(mIntent);
+    }
+
+    @Override
+    public void Init() {
+        MUserLogin mUserLogin;
+        mPreferences = getSharedPreferences(PRE_NAME, Context.MODE_PRIVATE);
+        boolean loginStatus = mPreferences.getBoolean(LOGIN, false);
+        if (loginStatus){
+            customStartActivity(MainActivity.class);
+        }else {
+            boolean remember = mPreferences.getBoolean(REMEMBER, false);
+            if (remember) {
+                mUserLogin = new MUserLogin(mPreferences.getString(EMAIL, "").toString(),
+                        mPreferences.getString(PASSWORD, "").toString(),
+                        remember);
+            } else
+                mUserLogin = new MUserLogin("", "", false);
+            setupLogin(mUserLogin.getEmail(), mUserLogin.getPassword(), mUserLogin.isRemember());
+        }
+    }
+
+    @Override
+    public void editSharePreference(){
+        SharedPreferences.Editor e = mPreferences.edit();
+        e.putString(EMAIL, getUsername());
+        e.putString(PASSWORD, getPassword());
+        e.putBoolean(REMEMBER, getRemember());
+        e.putBoolean(LOGIN, getLoginStatus());
+        e.commit();
+        mPLogin.loginClick();
     }
 
     @Override
@@ -99,38 +126,7 @@ public class VLogin extends AppCompatActivity implements iLoginView{
     }
 
     @Override
-    public void Init() {
-        MUserLogin mUserLogin = null;
-        mPreferences = getSharedPreferences(PRE_NAME, Context.MODE_PRIVATE);
-        boolean loginStatus = mPreferences.getBoolean(LOGIN, false);
-        if (loginStatus){
-            startActivities(MainActivity.class, "Username", mPreferences.getString(EMAIL, "").toString());
-        }else {
-            boolean remember = false;
-            //   boolean remember = mPreferences.getBoolean(REMEMBER, false);
-            if (remember) {
-                mUserLogin = new MUserLogin(mPreferences.getString(EMAIL, "").toString(),
-                        mPreferences.getString(PASSWORD, "").toString(),
-                        remember);
-            } else
-                mUserLogin = new MUserLogin("", "", false);
-            setupLogin(mUserLogin.getEmail(), mUserLogin.getPassword(), mUserLogin.isRemember());
-        }
-    }
-
-    @Override
-    public void editSharePreference(){
-        SharedPreferences.Editor e = mPreferences.edit();
-        e.putString(EMAIL, getUsername());
-        e.putString(PASSWORD, getPassword());
-        e.putBoolean(REMEMBER, getRemember());
-        e.putBoolean(LOGIN, getLoginStatus());
-        e.commit();
-        mPLogin.loginClick();
-    }
-
-    @Override
-    public void showToast() {
+    public void showLoginError() {
         Toast.makeText(VLogin.this, "Something is wrong!", Toast.LENGTH_SHORT).show();
     }
 }

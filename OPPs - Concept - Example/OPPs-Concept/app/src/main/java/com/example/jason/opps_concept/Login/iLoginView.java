@@ -6,7 +6,7 @@ import android.view.View;
  * Created by jason on 06/07/2016.
  */
 public interface iLoginView {
-    void startActivities(Class mClass, String intent, String intentContent);
+    void customStartActivity(Class mClass);
     void startMainActivity();
     String getUsername();
     String getPassword();
@@ -18,5 +18,5 @@ public interface iLoginView {
     void onClickLogin(View v);
     void Init();
     void editSharePreference();
-    void showToast();
+    void showLoginError();
 }

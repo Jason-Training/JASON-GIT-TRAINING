@@ -8,7 +8,7 @@ public class LoginService {
     public LoginService(){}
 
     public boolean checkLogin(String email, String password){
-        if (email.equals("") && password.equals("123")) {
+        if (email.equals("jason") && password.equals("123")) {
             return true;
         } else return false;
     }

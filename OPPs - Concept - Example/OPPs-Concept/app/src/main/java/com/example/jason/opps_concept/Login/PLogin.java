@@ -1,5 +1,4 @@
 package com.example.jason.opps_concept.Login;
-import com.example.jason.opps_concept.OPPsConcept.View.MainActivity;
 import com.example.jason.opps_concept.R;
 
 /**
@@ -18,11 +17,6 @@ public class PLogin {
     public void loginClick() {
         String email = mView.getUsername();
         String password = mView.getPassword();
-//        if (email.isEmpty() && password.isEmpty()){
-//            mView.showUsernameError(R.string.username_Error);
-//            mView.showPasswordError(R.string.password_Error);
-//            return;
-//        } else
         if (email.isEmpty()) {
             mView.showUsernameError(R.string.username_Error);
             return;
@@ -34,11 +28,10 @@ public class PLogin {
             if (checkLogin) {
                 mView.startMainActivity();
                 return;
+            } else {
+                mView.showLoginError();
+                return;
             }
-//            else {
-//                mView.showToast();
-//                return;
-//            }
         }
     }
 }
