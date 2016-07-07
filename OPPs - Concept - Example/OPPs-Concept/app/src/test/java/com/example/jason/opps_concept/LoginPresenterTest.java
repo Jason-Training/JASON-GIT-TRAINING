@@ -22,6 +22,8 @@ import static org.mockito.Mockito.when;
 @RunWith(MockitoJUnitRunner.class)
 public class LoginPresenterTest {
 
+    private static final int MATH_RESULT = 3;
+
     @Mock
     private iLoginView mView;
     @Mock
@@ -35,44 +37,58 @@ public class LoginPresenterTest {
     }
 
     @Test
-    public void Math(){
-        Assert.assertEquals("hello", "hel" + "lo");
+    public void checkMath(){
+        //Input conditions
+        when(mView.getMath()).thenReturn(MATH_RESULT);
+
+        int result = pLogin.Math();
+        Assert.assertEquals(result, MATH_RESULT);
     }
 
     @Test
     public void shouldShowErrorMessageWhenUsernameIsEmpty() throws Exception{
+        //Input conditions
         when(mView.getUsername()).thenReturn("");
         pLogin.loginClick();
 
+        //Expected results
         verify(mView).showUsernameError(R.string.username_Error);
     }
 
     @Test
     public void shouldShowErrorMessageWhenPasswordIsEmpty() throws Exception{
+        //Input conditions
         when(mView.getUsername()).thenReturn("adsad");
         when(mView.getPassword()).thenReturn("");
         pLogin.loginClick();
 
+        //Expected results
         verify(mView).showPasswordError(R.string.password_Error);
     }
 
     @Test
     public void shouldStartMainActivityWhenUsernameAndPasswordAreCorrect() throws Exception{
+        //Input conditions
         when(mView.getUsername()).thenReturn("jason");
         when(mView.getPassword()).thenReturn("123");
         when(loginService.checkLogin("jason","123")).thenReturn(true);
         pLogin.loginClick();
 
+        //Expected results
         verify(mView).startMainActivity();
     }
 
     @Test
     public void shouldLoginErrorWhenUsernameAndPasswordAreIncorrect() throws Exception{
+
+        //Input conditions
         when(mView.getUsername()).thenReturn("qưewqe");
         when(mView.getPassword()).thenReturn("qưeweq");
         when(loginService.checkLogin("qewqeqgwe","eqweqweqweq")).thenReturn(false);
+
         pLogin.loginClick();
 
+        //Expected results
         verify(mView).showLoginError();
     }
 

@@ -34,4 +34,8 @@ public class PLogin {
             }
         }
     }
+
+    public int Math(){
+        return 2 + 2;
+    }
 }

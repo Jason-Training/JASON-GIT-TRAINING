@@ -129,4 +129,9 @@ public class VLogin extends AppCompatActivity implements iLoginView{
     public void showLoginError() {
         Toast.makeText(VLogin.this, "Something is wrong!", Toast.LENGTH_SHORT).show();
     }
+
+    @Override
+    public int getMath() {
+       return 3;
+    }
 }

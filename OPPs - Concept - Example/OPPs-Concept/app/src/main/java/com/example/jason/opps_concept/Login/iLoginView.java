@@ -19,4 +19,5 @@ public interface iLoginView {
     void Init();
     void editSharePreference();
     void showLoginError();
+    int getMath();
 }
