@@ -1,9 +1,14 @@
 package com.example.jason.androidintroductionexample;
 
+import android.app.Notification;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.ComponentName;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.ServiceConnection;
 import android.os.IBinder;
+import android.support.v4.app.NotificationCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -63,6 +68,21 @@ public class MainActivity extends AppCompatActivity {
     public void startCustomizeBindService(View view) {
         Log.e(TAG, "  ---->  StartBindService!");
         startActivity(new Intent(this, BindServiceActivity.class));
+    }
+
+    public void startBroadcastReceiver(View view) {
+        Log.e(TAG, "  ---->  startBroadcastReceiver!");
+
+        Intent mIntent = new Intent(this, MyBroadcastReceiver.class);
+        mIntent.setAction("show.message.HELLO_MYSELF");
+        PendingIntent mPendingIntent = PendingIntent.getBroadcast(this, 1, mIntent, 0);
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(this)
+                .setSmallIcon(R.mipmap.ic_launcher)
+                .setContentText("Hello MyBroadcastReceiver")
+                .setContentTitle("Hello")
+                .setContentIntent(mPendingIntent);
+        NotificationManager manager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+        manager.notify(0, builder.build());
     }
 
 

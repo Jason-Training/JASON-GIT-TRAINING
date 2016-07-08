@@ -45,6 +45,14 @@
                 android:text="Bind Service"
                 android:textColor="#FFF"
                 android:background="@drawable/service_button_click"/>
+            <Button
+                android:onClick="startBroadcastReceiver"
+                android:layout_marginBottom="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Broadcast Receiver"
+                android:textColor="#FFF"
+                android:background="@drawable/service_button_click"/>
         </LinearLayout>
     </RelativeLayout>
 </LinearLayout>

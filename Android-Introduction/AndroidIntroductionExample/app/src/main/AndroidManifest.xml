@@ -16,6 +16,10 @@
             </intent-filter>
         </activity>
 
+        <receiver android:name=".MyBroadcastReceiver"
+            android:enabled="true">
+        </receiver>
+
         <service
             android:name=".MyService"
             android:enabled="true">

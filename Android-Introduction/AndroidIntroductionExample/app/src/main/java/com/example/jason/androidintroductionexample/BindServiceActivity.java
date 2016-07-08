@@ -21,7 +21,7 @@ public class BindServiceActivity extends AppCompatActivity {
         setContentView(R.layout.bindservice);
 
         Intent mIntent = new Intent(this, MyBindService.class);
-        bindService(mIntent, serviceConnection, BIND_AUTO_CREATE);
+        getApplicationContext().bindService(mIntent, serviceConnection, BIND_AUTO_CREATE);
     }
 
     @Override
@@ -65,6 +65,14 @@ public class BindServiceActivity extends AppCompatActivity {
         Toast.makeText(getApplicationContext(), secondMessage, Toast.LENGTH_LONG).show();
     }
 
+    public void unBindService(View view) {
+        if (isBind){
+            Log.e(TAG, "  ---->  unBindService!");
+            getApplicationContext().unbindService(serviceConnection);
+            isBind = false;
+        }
+    }
+
     ServiceConnection serviceConnection = new ServiceConnection() {
         @Override
         public void onServiceConnected(ComponentName name, IBinder service) {
@@ -83,9 +91,9 @@ public class BindServiceActivity extends AppCompatActivity {
     protected void onStop() {
         super.onStop();
         Log.e(TAG, "  ---->  onStop!");
-        if (isBind){
-            unbindService(serviceConnection);
-            isBind = false;
-        }
+//        if (isBind){
+////            unbindService(serviceConnection);
+////            isBind = false;
+//        }
     }
 }

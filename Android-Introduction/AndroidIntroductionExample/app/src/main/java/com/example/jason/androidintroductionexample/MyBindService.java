@@ -47,11 +47,6 @@ public class MyBindService extends Service {
         return super.onUnbind(intent);
     }
 
-    @Override
-    public void onRebind(Intent intent) {
-        Log.e(TAG, " ---> onRebind!");
-        super.onRebind(intent);
-    }
 
     public class LocalService extends Binder{
         MyBindService getService(){
