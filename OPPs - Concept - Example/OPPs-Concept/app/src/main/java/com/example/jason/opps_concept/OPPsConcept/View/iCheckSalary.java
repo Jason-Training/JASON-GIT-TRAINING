@@ -13,5 +13,10 @@ public interface iCheckSalary {
     void setSpinner(Spinner spinner, List<String> list);
     List<String> setListSex();
     List<String> setListPosition();
-
+    String getName();
+    String getAge();
+    String getPosition();
+    String getSex();
+    void showCheckAge(Exception e);
+    void showCheckSalary(float payroll);
 }

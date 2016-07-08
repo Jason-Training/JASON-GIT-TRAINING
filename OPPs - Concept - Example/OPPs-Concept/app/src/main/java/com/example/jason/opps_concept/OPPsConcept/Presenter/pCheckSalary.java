@@ -1,13 +1,12 @@
 package com.example.jason.opps_concept.OPPsConcept.Presenter;
 
-import android.widget.Toast;
 
 import com.example.jason.opps_concept.CustomizeExceptionHandling.InValidAge;
 import com.example.jason.opps_concept.CustomizeExceptionHandling.InvalidAgeException;
 import com.example.jason.opps_concept.OPPsConcept.Model.Def;
 import com.example.jason.opps_concept.OPPsConcept.Model.PM;
 import com.example.jason.opps_concept.OPPsConcept.Model.Staff;
-import com.example.jason.opps_concept.OPPsConcept.View.CheckSalaryActivity;
+import com.example.jason.opps_concept.OPPsConcept.View.iCheckSalary;
 
 /**
  * Created by jason on 04/07/2016.
@@ -15,17 +14,23 @@ import com.example.jason.opps_concept.OPPsConcept.View.CheckSalaryActivity;
 public class pCheckSalary {
 
     private InValidAge mInValidAge;
-    private CheckSalaryActivity mView;
+    private iCheckSalary mView;
 
-    public pCheckSalary(CheckSalaryActivity mView) {
+    public pCheckSalary(iCheckSalary mView) {
         this.mView = mView;
     }
 
-    public void setStaffInformation(String name, String sex, String age, String position){
+    public void setStaffInformation(){
+
+        String name = mView.getName();
+        String sex = mView.getSex();
+        String age = mView.getAge();
+        String position = mView.getPosition();
 
         final Staff mStaff;
         int iAge = Integer.parseInt(age);
         mInValidAge = new InValidAge(iAge);
+
         try {
             mInValidAge.checkValid();
             switch (position){
@@ -38,11 +43,11 @@ public class pCheckSalary {
             }
         } catch (InvalidAgeException e) {
             e.printStackTrace();
-            Toast.makeText(mView, "You are " + e.getMessage() + " to work on my company!", Toast.LENGTH_LONG).show();
+            mView.showCheckAge(e);
         }
     }
 
     public void saveStaff(Staff staff){
-            Toast.makeText(mView, "Your salary: " + staff.getPayroll(), Toast.LENGTH_LONG).show();
+            mView.showCheckSalary(staff.getPayroll());
     }
 }

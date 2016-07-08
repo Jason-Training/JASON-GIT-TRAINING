@@ -21,7 +21,7 @@ public class CheckSalaryActivity extends AppCompatActivity implements iCheckSala
 
     private EditText edtName, edtAge;
     private Spinner spnSex, spnPosition;
-    private String Name = null, Sex = null, Position = null, Age = null;
+    private String Sex = null, Position = null;
     private pCheckSalary mCheckSalary;
     private NullValue mNullValueName;
     private NullValue mNullValueAge;
@@ -74,14 +74,12 @@ public class CheckSalaryActivity extends AppCompatActivity implements iCheckSala
     //on click event
     @Override
     public void onclickCheckSalary(View v){
-        Name = edtName.getText().toString();
-        Age = edtAge.getText().toString();
-        mNullValueName = new NullValue(Name);
-        mNullValueAge = new NullValue(Age);
+        mNullValueName = new NullValue(getName());
+        mNullValueAge = new NullValue(getAge());
         try {
             mNullValueName.checkValue();
             mNullValueAge.checkValue();
-            mCheckSalary.setStaffInformation(Name, Sex, Age, Position);
+            mCheckSalary.setStaffInformation();
         } catch (NullValueException e) {
             e.printStackTrace();
             Toast.makeText(CheckSalaryActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
@@ -116,5 +114,34 @@ public class CheckSalaryActivity extends AppCompatActivity implements iCheckSala
         return list;
     }
 
+    @Override
+    public String getSex() {
+        return this.Sex;
+    }
+
+    @Override
+    public String getName() {
+        return edtName.getText().toString();
+    }
+
+    @Override
+    public String getAge() {
+        return edtAge.getText().toString();
+    }
+
+    @Override
+    public String getPosition() {
+        return this.Position;
+    }
+
+    @Override
+    public void showCheckAge(Exception e) {
+        Toast.makeText(getApplicationContext(), "You are " + e.getMessage() + " to work on my company!", Toast.LENGTH_LONG).show();
+    }
+
+    @Override
+    public void showCheckSalary(float payroll) {
+        Toast.makeText(getApplicationContext(), "Your salary: " + payroll, Toast.LENGTH_LONG).show();
+    }
 }
 
