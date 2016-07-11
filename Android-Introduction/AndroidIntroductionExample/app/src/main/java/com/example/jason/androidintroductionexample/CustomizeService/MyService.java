@@ -1,4 +1,4 @@
-package com.example.jason.androidintroductionexample;
+package com.example.jason.androidintroductionexample.CustomizeService;
 
 import android.app.Service;
 import android.content.Intent;

@@ -1,18 +1,17 @@
 package com.example.jason.androidintroductionexample;
 
-import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
-import android.content.ComponentName;
 import android.content.Intent;
-import android.content.IntentFilter;
-import android.content.ServiceConnection;
-import android.os.IBinder;
 import android.support.v4.app.NotificationCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+
+import com.example.jason.androidintroductionexample.CustomizeService.BindServiceActivity;
+import com.example.jason.androidintroductionexample.CustomizeService.MyBroadcastReceiver;
+import com.example.jason.androidintroductionexample.CustomizeService.ServiceActivity;
 
 public class MainActivity extends AppCompatActivity {
 

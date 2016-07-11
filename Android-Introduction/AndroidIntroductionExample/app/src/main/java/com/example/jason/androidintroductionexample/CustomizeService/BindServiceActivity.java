@@ -1,4 +1,4 @@
-package com.example.jason.androidintroductionexample;
+package com.example.jason.androidintroductionexample.CustomizeService;
 
 import android.content.ComponentName;
 import android.content.Intent;
@@ -9,6 +9,8 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
+
+import com.example.jason.androidintroductionexample.R;
 
 public class BindServiceActivity extends AppCompatActivity {
     private static final String TAG = "BindServiceActivity";
